@@ -20,9 +20,9 @@ class AttentionNet(nn.Module):
     def forward(self, support_sets, support_set_labels, target_images):
         """
         Compute the forward pass
-        :param support_sets: [batch_size, k, 64] dimensional tensors
+        :param support_sets: [batch_size, k, D] dimensional tensors
         :param support_set_labels: [batch_size, k, num_classes] dimensional tensors, one-hot encoded labels
-        :param target_images: [batch_size, 64] dimensional tensors
+        :param target_images: [batch_size, D] dimensional tensors
         :return: [batch_size, 1] dimensional tensors as the pdf for target images
         """
 
