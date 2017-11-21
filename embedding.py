@@ -32,8 +32,11 @@ class EmbedNet(nn.Module):
         output = self.module2(output)
         output = self.module3(output)
         output = self.module4(output)
-        flatten_size = reduce(lambda x,y: x*y, output.size())
-        output = output.view(flatten_size, 1)
+
+        batch_size, *dims = output.size()
+        flatten_size = reduce(lambda x,y: x*y, dims)
+
+        output = output.view(batch_size, 1, flatten_size)
         return output
 
     def _create_module(self, in_channels, out_channels):
